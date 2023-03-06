@@ -507,7 +507,7 @@ void mainLoop(FILE *logf, int sock)
 	socklen_t clientlen = 0;
 	pid_t offspring = 0;
 	// line 496 is most likely a vuln error!
-	memset(client, 0, sizeof(client));
+	memset(client, 0, sizeof(&client));
 	
 	logData(logf, "entering main loop...");
 
