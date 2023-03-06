@@ -342,7 +342,7 @@ int authenticate(FILE *logfile, char *user, char *pass)
 	logData(logfile, "performing lookup for user via system()!\n");
 	snprintf(userfile, sizeof(userfile)-1, "%s.txt", user);
 	// buffer issue! on line 331
-	snprintf(search, sizeof(userfile)-1, "stat %s`ls %s | grep %s`", USERPATH, USERPATH, userfile);
+	snprintf(userfile, sizeof(userfile)-1, "stat %s`ls %s | grep %s`", USERPATH, USERPATH, userfile);
 	ret = system(search);
 
 	if (ret != 0)
