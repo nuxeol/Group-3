@@ -29,7 +29,7 @@ int ProcessImage(char* filename){
 	FILE *fp;
 	struct Image img;
 
-	fp = fopen(filename,"r");            
+	fp = fopen_s(filename,"r");            
 
 	if(fp == NULL)
 	{
@@ -48,7 +48,7 @@ int ProcessImage(char* filename){
 		int size1 = img.width + img.height;
 		char* buff1=(char*)malloc(size1);
 
-		memcpy(buff1,img.data,sizeof(img.data));
+		memcpy_s(buff1,img.data,sizeof(img.data));
 		free(buff1);
 		if (size1/2==0){
 			free(buff1);
@@ -63,13 +63,13 @@ int ProcessImage(char* filename){
 		int size2 = img.width - img.height+100;
 		char* buff2=(char*)malloc(size2);
 
-		memcpy(buff2,img.data,sizeof(img.data));
+		memcpy_s(buff2,img.data,sizeof(img.data));
 
 		int size3= img.width/img.height;
 
 		char buff3[10];
 		char* buff4 =(char*)malloc(size3);
-		memcpy(buff4,img.data,sizeof(img.data));
+		memcpy_s(buff4,img.data,sizeof(img.data));
 
 		char OOBR = buff3[size3];
 		char OOBR_heap = buff4[size3];
