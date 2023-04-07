@@ -38,7 +38,7 @@ int ProcessImage(char* filename){
 	}
 
 
-	while(fread(&img,sizeof(img),1,fp)>0)
+	while(fread(&img,sizeof(img)-1,1,fp)>0)
 	{
 		printf("\n\tHeader\twidth\theight\tdata\t\r\n");
 
@@ -48,7 +48,7 @@ int ProcessImage(char* filename){
 		int size1 = img.width + img.height;
 		char* buff1=(char*)malloc(size1);
 
-		memcpy(buff1,img.data,sizeof(img.data));
+		memcpy(buff1,img.data,sizeof(img.data)-1);
 		free(buff1);
 		if (size1/2==0){
 			free(buff1);
@@ -63,13 +63,13 @@ int ProcessImage(char* filename){
 		int size2 = img.width - img.height+100;
 		char* buff2=(char*)malloc(size2);
 
-		memcpy(buff2,img.data,sizeof(img.data));
+		memcpy(buff2,img.data,sizeof(img.data)-1);
 
 		int size3= img.width/img.height;
 
 		char buff3[10];
 		char* buff4 =(char*)malloc(size3);
-		memcpy(buff4,img.data,sizeof(img.data));
+		memcpy(buff4,img.data,sizeof(img.data)-1);
 
 		char OOBR = buff3[size3];
 		char OOBR_heap = buff4[size3];
